@@ -1,5 +1,7 @@
 "use client"
 import Link from "next/link";
+import Image from "next/image";
+
 import { FiUser, FiLogOut, FiLoader, FiLock} from "react-icons/fi";
 
 import {signIn,signOut,useSession} from "next-auth/react"
@@ -37,7 +39,8 @@ await signOut()
       )}
 
         {session.status === "authenticated" && (
-           <div className="flex items-baseline gap-4">
+           <div className="flex self-center gap-4 ">       
+             
              <Link href={"/dashboard"}>
                <FiUser size={24} color="#3B82F6"/>
              </Link>
