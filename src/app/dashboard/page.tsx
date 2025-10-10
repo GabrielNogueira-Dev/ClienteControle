@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth"
 import { redirect } from "next/navigation"
 
 import Link from "next/link"
-import { TicketItem } from "./components/header/ticket"
+import { TicketItem } from "./components/ticket/index"
 
 export default async function Dashboard(){
 
@@ -31,7 +31,7 @@ const session = await getServerSession(authOptions)
                     <thead >
                         <tr>
                             <th className="font-medium text-left pl-1">CLIENTE</th>
-                            <th className="font-medium text-left  hidden sm:table-cell">DATA CADASTRO</th>
+                            <th className="font-medium text-left hidden sm:table-cell">DATA CADASTRO</th>
                             <th className="font-medium text-left pl-1">STATUS</th>
                             <th className="font-medium text-left pl-1">#</th>
                         </tr>

@@ -19,7 +19,7 @@ callbacks: {
             name:string;
             email:string;
         }
-
+        
         return session;
 
     }
