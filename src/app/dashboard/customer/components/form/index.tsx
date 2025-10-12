@@ -11,7 +11,7 @@ const schema = z.object({
     name: z.string().min(1, "O nome é obrigatório"),
     email: z.string().email("Email válido é obrigatório").min(1,"Email é obrigatório"),
     phone: z.string().refine( (value) => {
-        return /^(?:\(\d{3}\)\s?)?\d{9}}$/.test(value) || /^\d{3}\s\d{9}$/.test(value) || /^\d{12}$/.test(value)
+        return /^(?:\(\d{3}\)\s?)?\d{9}$/.test(value) || /^\d{3}\s\d{9}$/.test(value) || /^\d{12}$/.test(value)
         
     },{
         message: "Telefone inválido. Formato esperado: (999) 9999999999"
@@ -21,7 +21,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-export function NewCustomerForm({userId}: {userId: string}){
+export function NewCustomerForm({userId}: {userId: string}){ 
     const { register, handleSubmit, formState: {errors} } = useForm<FormData>({
         resolver:zodResolver(schema)
     })
@@ -29,14 +29,14 @@ export function NewCustomerForm({userId}: {userId: string}){
     const router = useRouter()
 
    async function handleRegisterCustomer(data : FormData){
-      const res =   await api.post("/api/customer", {
+       await api.post("/api/customer", {
             name: data.name,
             email: data.email,
             phone: data.phone,
             userId: userId,
             address: data.address
     })
-    console.log(res.data)
+    router.refresh()
     router.replace("/dashboard/customer")
     }
     return(
