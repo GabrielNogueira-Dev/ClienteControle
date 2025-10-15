@@ -38,8 +38,9 @@ export function CardCustomer( {customer}: {customer: CustomerProps}){
             <p> <a className="font-bold">Email:</a> {customer.email} </p>
             <p> <a className="font-bold">Telefone:</a> {customer.phone} </p>
             {customer.address? <p> <a className="font-bold">Endereço:</a> {customer.address} </p> : null}
-            <button className="bg-red-500 px-4 rounded text-white mt-2 self-start"
-            onClick={handleDelete}>
+            <button className="bg-red-500 px-4 rounded text-white mt-2 self-start cursor-pointer"
+            onClick={handleDelete}
+            >
                 Deletar
             </button>
         </article>

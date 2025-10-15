@@ -49,7 +49,7 @@ export async function POST(request: Request){
             if(!userId){
                 return NextResponse.json({error: "Failed delete customer"}, {status:400} )
             }
-
+                //BARRAR O USUARIO DE DELETAR CLIENTE COM TICKET ABERTO
             const findTickets = await prismaClient.ticket.findFirst({
                 where: {
                     customerId:userId
