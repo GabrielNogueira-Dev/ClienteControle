@@ -17,7 +17,8 @@ const session = await getServerSession(authOptions)
 
     const tickets = await prismaClient.ticket.findMany({
         where:{
-            userId: session.user.id
+            userId: session.user.id,
+            status: "ABERTO"
         },
         include:{
             customer:true
@@ -60,7 +61,9 @@ const session = await getServerSession(authOptions)
                     </tbody>
 
                 </table>
-
+                    {tickets.length === 0 && (
+                        <h1 className="px-2 md:px-0 text-gray-600">Nenhum ticket aberto foi encontrado..</h1>
+                    )}
               </main>
 
             </Container>

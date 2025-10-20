@@ -37,6 +37,7 @@ export default async function NewTicket(){
             }
         })
         console.log("chamado aberto")
+        redirect("/dashboard")
     }
 
     return(
@@ -83,7 +84,7 @@ export default async function NewTicket(){
                 </Link>
             )}
 
-            <button type="submit" disabled={customers.length === 0} className="bg-blue-800 disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-bold px-2 h-11 rounded-md my-4">Cadastrar</button>
+            <button type="submit" disabled={customers.length === 0} className="bg-blue-800 w-full disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-bold px-2 h-11 rounded-md my-4">Cadastrar</button>
             
             </form>
 

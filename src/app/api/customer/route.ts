@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prismaClient from "@/lib/prisma";
-import { redirect } from "next/navigation";
 
 //ROTA DE CADASTRO DE CLIENTE
 export async function POST(request: Request){
