@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prismaClient from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 //ROTA DE CADASTRO DE CLIENTE
 export async function POST(request: Request){
@@ -68,5 +69,23 @@ export async function POST(request: Request){
 
         }catch(err){
         console.log(err)}
+
+    }
+
+    export async function GET(request: Request){
+        const {searchParams} = new URL(request.url)
+        const customerEmail = searchParams.get("email")
+try{
+const customer = await prismaClient.customer.findFirst({
+    where:{
+        email:customerEmail as string
+    }
+})
+return NextResponse.json(customer)
+
+}catch(err){
+    return NextResponse.json({error:"Customer not found"}, {status:400})
+}
+        return NextResponse.json({message:"recebido"})
 
     }

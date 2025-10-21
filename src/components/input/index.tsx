@@ -15,7 +15,7 @@ export function Input({name, placeholder, type, register, error, rules}: InputPr
     return(
         <>
         <input 
-        placeholder={placeholder} className="flex flex-col w-full border-2 border-slate-200 rounded-md  h-11 px-2"
+        placeholder={placeholder} className="flex flex-col w-full border-2 outline-none border-slate-200 rounded-md  h-11 px-2"
         {...register?.(name, rules)}
         id={name}
         type={type}
