@@ -16,7 +16,7 @@ import { api } from "@/lib/api"
 
     type FormData = z.infer<typeof schema>
 
-    interface CustomerDataInfo{
+  export interface CustomerDataInfo{
         id:string;
         name:string;
     }
@@ -34,7 +34,7 @@ export default function OpenTicket(){
     }
 
     async function handleSearchCustomer(data: FormData){
-        const response = await api.get("api/customer",{
+        const response = await api.get("/api/customer",{
             params:{
                 email: data.email
             }
@@ -84,7 +84,7 @@ export default function OpenTicket(){
                 </form>
             )}
 
-               { customer !== null &&  <FormTicket/> }
+               { customer !== null &&  <FormTicket customer={customer}/> }
 
             </main>
         </div>

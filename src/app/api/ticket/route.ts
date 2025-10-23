@@ -37,3 +37,28 @@ export async function PATCH(request:Request){
     }
 
 }
+
+export async function POST(request: Request){
+    const {customerId, name, description} = await request.json()
+
+    if(!customerId || !name || !description){
+        return NextResponse.json({error: "Failed create new text"}, {status:400})
+    }
+
+try{
+
+   await prismaClient.ticket.create({
+        data:{
+            name:name,
+            description:description,
+            status:"ABERTO",
+            customerId: customerId
+        }
+    })
+return NextResponse.json({message:"registro efetuado agora novamente"})
+}catch(err){
+    return NextResponse.json({error: "Failed create new text"}, {status:400})
+}
+
+  
+}
